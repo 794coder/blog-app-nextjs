@@ -13,7 +13,16 @@ export async function middleware(request:NextRequest){
     const pathName=request.nextUrl.pathname;
 
     const session = getSessionCookie(request);
-
+    if (request.method === 'OPTIONS') {
+    return new NextResponse(null, {
+      status: 204,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    })
+  }
     const isProtectedRoute=protectedRoutes.some(route=>pathName.startsWith(route));
     if(isProtectedRoute&&!session){
 
@@ -23,7 +32,9 @@ export async function middleware(request:NextRequest){
     if(pathName==='/auth'&&session){
         return NextResponse.redirect(new URL('/',request.url))
     }
-    return NextResponse.next()
+    const res = NextResponse.next()
+  res.headers.set('Access-Control-Allow-Origin', '*')
+  return res
 }
 
 export const config={
