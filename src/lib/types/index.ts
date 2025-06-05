@@ -7,8 +7,11 @@ export interface PostListProps{
         description: string;
         slug: string;
         createdAt:Date;
+
         author:{
-            name: string;
+
+        name: string;
+
         }
     }>
 }
@@ -20,8 +23,11 @@ export interface PostCardProps{
         description: string;
         slug: string;
         createdAt:Date;
+
         author:{
-            name: string;
+
+        name: string;
+
         }
     }
 }

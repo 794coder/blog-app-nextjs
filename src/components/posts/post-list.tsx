@@ -8,7 +8,14 @@ const PostList = ({posts}:PostListProps) => {
             " gap-6"}>
             {
                 posts.map(post=>(
-                    <PostCard post={post} key={post.id}/>
+
+                    <PostCard post={{
+                        ...post,
+                        id:String(post.id),
+                        author:{
+                            name: post.author.name,
+                        }
+                    }} key={post.id}/>
                 ))
             }
         </div>

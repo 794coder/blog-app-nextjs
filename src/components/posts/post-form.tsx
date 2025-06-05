@@ -24,7 +24,7 @@ type PostFormValues=z.infer<typeof postFormSchema>
 interface PostFormProps{
     isEditing?: boolean;
     post?:{
-        is:number
+        id:number
         title:string
         description:string
         content:string

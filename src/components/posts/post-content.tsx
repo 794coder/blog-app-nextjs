@@ -32,7 +32,7 @@ const PostContent = ({post,isAuthor}:PostContentProps) => {
                                     Edit text
                                 </Link>
                             </Button>
-                            <DeletePostButton postId={post.id}/>
+                            <DeletePostButton postId={+post.id}/>
                         </div>
                     </CardFooter>
                 )

@@ -8,6 +8,7 @@ export const metadata:Metadata={
 }
 const Home = async() => {
     const posts=await getAllPosts()
+
     return (
         <main className="py-10">
           <div className={"max-w-7xl mx-auto px-4"}>
@@ -18,7 +19,17 @@ const Home = async() => {
                           <h2 className={"text-xl font-medium"}>
                               No posts yet
                           </h2>
-                      </div>:<PostList posts={posts} />
+                      </div>:<PostList
+                      posts={posts.map((post)=>(
+                          {
+                              ...post,
+                          id:String(post.id),
+                          author:{
+                              name:post.author.name,
+                      }
+                          }
+                      ))}
+                      />
               }
           </div>
         </main>

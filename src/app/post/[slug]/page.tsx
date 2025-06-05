@@ -21,7 +21,13 @@ const PostDetails = async({params}:{params:Promise<{slug:string}>}) => {
     return (
         <main className="py-10">
             <div className="max-w-4xl mx-auto">
-                <PostContent post={post} isAuthor={isAuthor}/>
+                <PostContent post={{
+                    ...post,
+                    id:String(post.id),
+                    author:{
+                        name:post.author.name,
+                    }
+                }} isAuthor={isAuthor}/>
             </div>
         </main>
     );
